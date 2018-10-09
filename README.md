@@ -22,6 +22,16 @@ This would be the easiest interface because employees would have access to this 
 3. Email is sent out, or calendar is updated with match-ups
 3. Users meet up and grab that coffee (tea, juice)
 
+# Technology
+
+- Node
+- AWS Lambda with Scheduled Events
+- DynamoDB to store matchups and users
+
+A Node lambda would be the best use case for me, due to the existence of a prebuilt Google API SDK and ability to run on demand. Using [scheduled events](https://docs.aws.amazon.com/lambda/latest/dg/with-scheduled-events.html), it can grab all of the calendar events at a certain time on Thursdays and process the randomization. Since we are in AWS land, we can also store all the matchups and member info in Dynamo.
+
+An alternative would be to use Google's Cloud Functions, but I will opt for AWS to eventually migrate it over to our system. Google also doesn't seem to give any preference to GCF when contact their own servers (authenticated SDKs and what not).
+
 ## Backlog of Concerns and Ideas
 
 - [ ] Randomization must take into account minimizing repeat meetups 
